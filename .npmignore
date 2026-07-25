@@ -1,0 +1,24 @@
+# Source (only dist is published)
+src/
+tsconfig.json
+
+# Tests & docs
+**/*.test.ts
+**/*.spec.ts
+test/
+tests/
+docs/
+
+# Dev config
+.gitignore
+.editorconfig
+.vscode/
+.idea/
+
+# Logs & OS
+*.log
+.DS_Store
+
+# Env
+.env
+.env.local
