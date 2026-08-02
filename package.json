@@ -1,5 +1,5 @@
 {
-  "name": "pi-kimi-cron",
+  "name": "@aiwayds/pi-kimi-cron",
   "version": "1.0.0",
   "description": "Cron scheduling extension for Pi coding agent, inspired by Kimi Code's cron feature",
   "keywords": [
@@ -19,6 +19,7 @@
     }
   },
   "files": [
+    "index.ts",
     "dist",
     "README.md",
     "LICENSE"
@@ -41,6 +42,9 @@
   },
   "author": "fliu56",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fan56/pi-kimi-cron.git"

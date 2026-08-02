@@ -1,4 +1,4 @@
-# pi-kimi-cron
+# @aiwayds/pi-kimi-cron
 
 Cron scheduling extension for the [Pi](https://github.com/earendil-works/pi) coding agent. Schedule prompts to be injected into the conversation on a recurring schedule using standard 5-field cron expressions.
 
@@ -34,13 +34,13 @@ cron expressions:
 ## Installation
 
 ```bash
-npm install pi-kimi-cron
+npm install @aiwayds/pi-kimi-cron
 ```
 
 Then register the extension with Pi (add to your Pi extension configuration):
 
 ```ts
-import cronSchedulerExtension from 'pi-kimi-cron';
+import cronSchedulerExtension from '@aiwayds/pi-kimi-cron';
 
 export default cronSchedulerExtension;
 ```
