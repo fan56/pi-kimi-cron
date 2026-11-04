@@ -1,0 +1,46 @@
+# CI: install + build (tsc) + node --test suite + npm pack --dry-run, on
+# every push to main and every pull request. The matrix covers the shipped
+# engines floor (>=22.19, where node's built-in TS type stripping is
+# available) plus current LTS.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        node-version: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        # No lockfile: resolve the pi-coding-agent / typebox devDependency
+        # closure fresh on every run.
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Pack dry-run (files must cover the entry points)
+        run: npm pack --dry-run
